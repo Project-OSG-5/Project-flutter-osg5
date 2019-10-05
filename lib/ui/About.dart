@@ -10,6 +10,7 @@ class About extends StatelessWidget {
 
       body: Center(
         child: Container(
+          margin: EdgeInsets.only(top: 200),
           padding: EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,9 +23,8 @@ class About extends StatelessWidget {
               SizedBox(height: 8.0,),
               Text("Anggota", style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.bold),),
               Text("Iman Nurohman"),
-              Text("Novan Masriandi"),
-              Text("Dani Wira"),
               Text("Syahrizal Akbar"),
+              Text("Dani Wira"),
               
             ],
           ),

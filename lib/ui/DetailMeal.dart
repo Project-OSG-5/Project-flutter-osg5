@@ -72,7 +72,7 @@ class _DetailMealState extends State<DetailMeal> {
                                   SizedBox(
                                     height: 8.0,
                                   ),
-                                  Text('Meal Category'),
+                                  Text(meal['strCategory']),
                                   SizedBox(
                                     height: 16.0,
                                   ),
@@ -110,7 +110,7 @@ class _DetailMealState extends State<DetailMeal> {
                                   SizedBox(
                                     height: 8.0,
                                   ),
-                                  Text('Area Meal'),
+                                  Text(meal['strArea']),
                                   SizedBox(
                                     height: 16.0,
                                   ),
