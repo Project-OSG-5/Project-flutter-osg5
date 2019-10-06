@@ -42,12 +42,10 @@ class _HomeState extends State<HomePage> {
         ),
         backgroundColor: Colors.orange,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-          ),
+          IconButton(icon: Icon(Icons.search), color: Colors.white, onPressed: () {
+            showSearch(context: context, delegate: DataSearch());  
+            }),
+            
           IconButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) => About()));
@@ -55,6 +53,7 @@ class _HomeState extends State<HomePage> {
             icon: Icon(
               Icons.error,
               color: Colors.white,
+
             ),
           )
         ],
@@ -91,7 +90,57 @@ class _HomeState extends State<HomePage> {
           _incrementTab(index);
         },
       ),
+      
     );
+    
+  }
+}
+
+class DataSearch extends SearchDelegate<String>{
+  final List<Widget> pages = [
+    PageHome("BreakFast"),
+    PageHome("Dessert"),
+    PageHome("Pasta")
+  ];
+  final PageStorageBucket bucket = PageStorageBucket();
+ 
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [IconButton(icon: Icon(Icons.clear), 
+    onPressed: () {
+      query = "";
+    })];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow, 
+        progress: transitionAnimation,
+        ), 
+        onPressed: () {
+          close(context, null);
+        });
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    // return null;
+  }
+
+  @override 
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    
+    final suggestionList = query.isEmpty ? bucket : Meal;
+
+    return ListView.builder(
+      itemBuilder: (context,index)=>ListTile(
+      leading: Icon(Icons.search),
+    ),
+    );     
   }
 }
 
